@@ -559,7 +559,7 @@ export const PROFILE: ProfileData = {
     "United States",
   ],
   meta: {
-    siteUrl: "https://hossam-ali.dev",
+    siteUrl: "https://hossamai.vercel.app",
     siteTitle: "Hossam Ali — Human AI Trainer & AI Engineer",
     siteDescription:
       "Portfolio of Hossam Ali (Hossam Mohammed Tarfaia Ali) — Human AI Trainer & Evaluator, AI Engineer (LLMs, RAG, Agents), and Full-Stack Developer with Mechanical & Industrial Systems engineering background.",
