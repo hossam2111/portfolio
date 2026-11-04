@@ -19,7 +19,7 @@ export function SocialLinks() {
   const activeSocials = PROFILE.socialLinks.filter((link) => Boolean(link.url && link.url.trim()));
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex flex-wrap items-center gap-3">
       {activeSocials.map((link) => (
         <a
           key={link.name}
@@ -27,27 +27,26 @@ export function SocialLinks() {
           target={link.url.startsWith("http") ? "_blank" : undefined}
           rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
           aria-label={link.name}
-          className="group relative flex h-10 w-10 items-center justify-center rounded-xl border border-white/5 bg-surface-subtle/60 text-slate-300 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:bg-surface-hover hover:text-accent shadow-sm"
+          className="group relative flex h-11 w-11 items-center justify-center rounded-xl border border-ink-border bg-ink-raised/70 text-paper transition-all duration-200 hover:-translate-y-0.5 hover:border-signal/40 hover:bg-ink-hover hover:text-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal shadow-sm"
         >
           {renderIcon(link.icon, "h-4 w-4 transition-transform group-hover:scale-110")}
           <span className="sr-only">{link.name}</span>
-          <span className="pointer-events-none absolute -top-8 scale-0 rounded bg-surface border border-white/10 px-2 py-0.5 text-[10px] font-mono text-slate-200 transition-all group-hover:scale-100 shadow-md">
+          <span className="pointer-events-none absolute -top-8 scale-0 rounded bg-ink-raised border border-ink-border px-2 py-0.5 text-[11px] font-sans text-paper transition-all group-hover:scale-100 shadow-md">
             {link.name}
           </span>
         </a>
       ))}
 
-      {/* Resume Link */}
+      {/* Resume PDF link */}
       {PROFILE.resumeUrl && (
         <a
           href={PROFILE.resumeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="View Resume PDF"
-          className="group relative flex items-center gap-2 rounded-xl border border-white/5 bg-surface-subtle/60 px-3.5 h-10 text-xs font-mono text-slate-200 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:bg-surface-hover hover:text-accent shadow-sm"
+          download="Hossam_Ali_CV.pdf"
+          aria-label="Download curriculum vitae PDF"
+          className="group relative flex items-center gap-2 rounded-xl border border-ink-border bg-ink-raised/70 px-4 h-11 text-xs font-sans font-medium text-paper transition-all duration-200 hover:-translate-y-0.5 hover:border-signal/40 hover:bg-ink-hover hover:text-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal shadow-sm"
         >
-          <FileText className="h-3.5 w-3.5 text-accent transition-transform group-hover:scale-110" />
-          <span>Resume PDF</span>
+          <FileText className="h-3.5 w-3.5 text-signal transition-transform group-hover:scale-110" />
+          <span>Curriculum vitae</span>
         </a>
       )}
     </div>

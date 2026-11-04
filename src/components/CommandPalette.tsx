@@ -87,7 +87,6 @@ export function CommandPalette() {
     }
   };
 
-  // Compile command list
   const activeSocials = PROFILE.socialLinks.filter((s) => Boolean(s.url && s.url.trim()));
 
   const commands: CommandItem[] = [
@@ -101,14 +100,14 @@ export function CommandPalette() {
     },
     {
       id: "nav-training-eval",
-      title: "Jump to AI Training & Evaluation",
+      title: "Jump to AI training and evaluation",
       category: "Navigation",
       icon: <ArrowRight className="h-4 w-4" />,
       onSelect: () => navigateTo("#training-eval"),
     },
     {
       id: "nav-tech-stack",
-      title: "Jump to Technical Stack",
+      title: "Jump to Technical stack",
       category: "Navigation",
       icon: <ArrowRight className="h-4 w-4" />,
       onSelect: () => navigateTo("#tech-stack"),
@@ -129,14 +128,14 @@ export function CommandPalette() {
     },
     {
       id: "nav-education",
-      title: "Jump to Education & Certifications",
+      title: "Jump to Education and certifications",
       category: "Navigation",
       icon: <ArrowRight className="h-4 w-4" />,
       onSelect: () => navigateTo("#education"),
     },
     {
       id: "nav-languages-global",
-      title: "Jump to Languages & Global Exposure",
+      title: "Jump to Languages and global reach",
       category: "Navigation",
       icon: <ArrowRight className="h-4 w-4" />,
       onSelect: () => navigateTo("#languages-global"),
@@ -155,14 +154,14 @@ export function CommandPalette() {
       title: p.title,
       subtitle: p.oneLineSummary,
       category: "Projects" as const,
-      icon: <Code2 className="h-4 w-4 text-accent" />,
+      icon: <Code2 className="h-4 w-4 text-signal" />,
       onSelect: () => navigateTo(`/projects/${p.slug}`),
     })),
 
     // Actions
     {
       id: "act-copy-email",
-      title: copied ? "Copied Email Address!" : `Copy Email (${PROFILE.email})`,
+      title: copied ? "Copied email address" : `Copy email (${PROFILE.email})`,
       category: "Actions",
       icon: copied ? (
         <Check className="h-4 w-4 text-emerald-400" />
@@ -175,15 +174,23 @@ export function CommandPalette() {
       ? [
           {
             id: "act-resume",
-            title: "View Resume PDF",
+            title: "Download curriculum vitae PDF",
             category: "Actions" as const,
             icon: <FileText className="h-4 w-4" />,
-            onSelect: () => openUrl(PROFILE.resumeUrl),
+            onSelect: () => {
+              setIsOpen(false);
+              const link = document.createElement("a");
+              link.href = PROFILE.resumeUrl;
+              link.download = "Hossam_Ali_CV.pdf";
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            },
           },
         ]
       : []),
 
-    // Socials (only active ones)
+    // Socials
     ...activeSocials.map((s) => ({
       id: `soc-${s.name.toLowerCase()}`,
       title: `${s.name} (${s.url})`,
@@ -203,7 +210,6 @@ export function CommandPalette() {
     );
   });
 
-  // Handle keyboard list navigation
   const handleKeyNavigation = (e: React.KeyboardEvent) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -223,15 +229,14 @@ export function CommandPalette() {
 
   return (
     <>
-      {/* Trigger button floating for mobile and keyboard prompt */}
+      {/* Floating button: compact icon + ⌘K only, hidden below md so it doesn't cover content */}
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Open command palette (Ctrl+K or ⌘K)"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full border border-white/10 bg-surface/90 px-3.5 py-2 text-xs font-mono text-slate-300 backdrop-blur-xl transition-all duration-200 hover:border-accent/40 hover:bg-surface-subtle hover:text-accent shadow-[0_8px_30px_rgba(0,0,0,0.6)]"
+        className="fixed bottom-5 right-5 z-40 hidden md:flex h-10 items-center gap-1.5 rounded-full border border-ink-border bg-ink-raised/90 px-3 text-xs font-sans text-paper backdrop-blur-xl transition-all duration-200 hover:border-signal/40 hover:bg-ink-hover hover:text-signal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-signal shadow-[0_8px_24px_rgba(15,22,38,0.7)]"
       >
-        <Search className="h-3.5 w-3.5 text-accent" />
-        <span className="hidden sm:inline">Command Palette</span>
-        <kbd className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5 text-[10px] text-slate-400">
+        <Search className="h-3.5 w-3.5 text-signal" />
+        <kbd className="rounded border border-ink-border bg-ink px-1.5 py-0.5 text-[10px] text-muted font-sans">
           ⌘K
         </kbd>
       </button>
@@ -241,18 +246,18 @@ export function CommandPalette() {
         <div
           role="dialog"
           aria-modal="true"
-          aria-label="Command Palette"
+          aria-label="Command palette"
           className="fixed inset-0 z-50 flex items-start justify-center bg-black/75 px-4 pt-20 sm:pt-28 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="w-full max-w-xl overflow-hidden rounded-2xl border border-white/15 bg-surface/95 shadow-[0_20px_60px_rgba(0,0,0,0.8)] backdrop-blur-2xl transition-all animate-in fade-in zoom-in-95 duration-150"
+            className="w-full max-w-xl overflow-hidden rounded-2xl border border-ink-border bg-ink-raised/95 shadow-[0_20px_60px_rgba(0,0,0,0.85)] backdrop-blur-2xl transition-all animate-in fade-in zoom-in-95 duration-150"
             onClick={(e) => e.stopPropagation()}
             onKeyDown={handleKeyNavigation}
           >
             {/* Input Header */}
-            <div className="relative flex items-center border-b border-white/10 px-4">
-              <Search className="h-4 w-4 text-accent" />
+            <div className="relative flex items-center border-b border-ink-border px-4">
+              <Search className="h-4 w-4 text-signal" />
               <input
                 ref={inputRef}
                 type="text"
@@ -262,9 +267,9 @@ export function CommandPalette() {
                   setQuery(e.target.value);
                   setSelectedIndex(0);
                 }}
-                className="w-full bg-transparent px-3 py-4 text-sm text-slate-100 placeholder-slate-500 focus:outline-none"
+                className="w-full bg-transparent px-3 py-4 text-sm text-paper placeholder-muted focus:outline-none font-sans"
               />
-              <kbd className="hidden sm:inline-block rounded border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-mono text-slate-400">
+              <kbd className="hidden sm:inline-block rounded border border-ink-border bg-ink px-2 py-0.5 text-[10px] text-muted">
                 ESC
               </kbd>
             </div>
@@ -272,7 +277,7 @@ export function CommandPalette() {
             {/* Results List */}
             <div className="max-h-[380px] overflow-y-auto p-2">
               {filtered.length === 0 ? (
-                <div className="py-8 text-center text-sm text-slate-400">
+                <div className="py-8 text-center text-sm text-muted font-sans">
                   No matching commands found.
                 </div>
               ) : (
@@ -283,18 +288,18 @@ export function CommandPalette() {
                       key={item.id}
                       onClick={item.onSelect}
                       onMouseEnter={() => setSelectedIndex(index)}
-                      className={`flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-left text-sm transition-colors ${
+                      className={`flex w-full items-center justify-between rounded-xl px-3.5 py-2.5 text-left text-sm font-sans transition-colors ${
                         isSelected
-                          ? "bg-accent/10 text-white"
-                          : "text-slate-300 hover:bg-white/5"
+                          ? "bg-signal/15 text-paper"
+                          : "text-paper-dim hover:bg-ink-hover"
                       }`}
                     >
                       <div className="flex items-center gap-3 overflow-hidden">
                         <span
                           className={`flex h-7 w-7 items-center justify-center rounded-lg border ${
                             isSelected
-                              ? "border-accent/40 bg-accent/20 text-accent"
-                              : "border-white/5 bg-white/5 text-slate-400"
+                              ? "border-signal/40 bg-signal/20 text-signal"
+                              : "border-ink-border bg-ink text-muted"
                           }`}
                         >
                           {item.icon}
@@ -302,13 +307,13 @@ export function CommandPalette() {
                         <div className="truncate">
                           <p className="font-medium truncate">{item.title}</p>
                           {item.subtitle && (
-                            <p className="truncate text-xs text-slate-400">
+                            <p className="truncate text-xs text-muted">
                               {item.subtitle}
                             </p>
                           )}
                         </div>
                       </div>
-                      <span className="ml-3 shrink-0 rounded border border-white/5 bg-white/5 px-1.5 py-0.5 text-[10px] font-mono uppercase text-slate-400">
+                      <span className="ml-3 shrink-0 rounded border border-ink-border bg-ink px-1.5 py-0.5 text-[10px] font-sans text-muted">
                         {item.category}
                       </span>
                     </button>
@@ -318,13 +323,13 @@ export function CommandPalette() {
             </div>
 
             {/* Footer */}
-            <div className="flex items-center justify-between border-t border-white/10 bg-surface-subtle/50 px-4 py-2 text-[11px] font-mono text-slate-400">
+            <div className="flex items-center justify-between border-t border-ink-border bg-ink/50 px-4 py-2.5 text-xs text-muted font-sans">
               <div className="flex items-center gap-3">
                 <span>↑↓ Navigate</span>
                 <span>↵ Select</span>
                 <span>ESC Close</span>
               </div>
-              <span className="text-accent/80 font-medium">Hossam Ali</span>
+              <span className="text-signal font-medium">{PROFILE.name}</span>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { PROFILE } from "@/data/profile";
 
-export const alt = `${PROFILE.name} — Human AI Trainer & AI Engineer`;
+export const alt = `${PROFILE.name} — Human AI Trainer & Evaluator`;
 export const size = {
   width: 1200,
   height: 630,
@@ -18,58 +18,57 @@ export default function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#07080a",
+          backgroundColor: "#0F1626",
           padding: "80px",
-          fontFamily: "system-ui, sans-serif",
+          fontFamily: "system-ui, -apple-system, sans-serif",
           position: "relative",
         }}
       >
-        {/* Subtle decorative grid/glow */}
+        {/* Soft amber signal radial background glow */}
         <div
           style={{
             position: "absolute",
-            top: "-100px",
-            right: "-100px",
-            width: "500px",
-            height: "500px",
+            top: "-120px",
+            right: "-120px",
+            width: "550px",
+            height: "550px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(242, 169, 59, 0.18) 0%, transparent 70%)",
           }}
         />
 
-        {/* Top Header */}
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        {/* Top Header Tag */}
+        <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
           <div
             style={{
-              width: "14px",
-              height: "14px",
+              width: "12px",
+              height: "12px",
               borderRadius: "50%",
-              backgroundColor: "#00f0ff",
-              boxShadow: "0 0 16px #00f0ff",
+              backgroundColor: "#F2A93B",
+              boxShadow: "0 0 16px #F2A93B",
             }}
           />
           <span
             style={{
-              color: "#00f0ff",
-              fontSize: "20px",
+              color: "#F2A93B",
+              fontSize: "18px",
               fontWeight: 600,
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
+              letterSpacing: "0.08em",
             }}
           >
-            PORTFOLIO // AI TRAINING & SYSTEMS
+            Human in the loop — Turning noise into signal
           </span>
         </div>
 
         {/* Center Name & Title */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
           <h1
             style={{
-              color: "#ffffff",
-              fontSize: "64px",
+              color: "#ECE8DF",
+              fontSize: "68px",
               fontWeight: 800,
-              lineHeight: 1.1,
-              letterSpacing: "-0.02em",
+              lineHeight: 1.05,
+              letterSpacing: "-0.025em",
               margin: 0,
             }}
           >
@@ -78,20 +77,20 @@ export default function Image() {
 
           <div
             style={{
-              width: "120px",
+              width: "80px",
               height: "4px",
-              backgroundColor: "#00f0ff",
+              backgroundColor: "#F2A93B",
               borderRadius: "2px",
             }}
           />
 
           <p
             style={{
-              color: "#94a3b8",
+              color: "#9AA3B5",
               fontSize: "26px",
               fontWeight: 400,
               maxWidth: "960px",
-              lineHeight: 1.4,
+              lineHeight: 1.35,
               margin: 0,
             }}
           >
@@ -99,21 +98,21 @@ export default function Image() {
           </p>
         </div>
 
-        {/* Bottom meta strip */}
+        {/* Bottom meta strip (clean sentence case, no middle dots) */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            borderTop: "1px solid rgba(255, 255, 255, 0.1)",
+            borderTop: "1px solid rgba(236, 232, 223, 0.1)",
             paddingTop: "24px",
           }}
         >
-          <span style={{ color: "#64748b", fontSize: "18px" }}>
-            {PROFILE.location} • {PROFILE.email}
+          <span style={{ color: "#9AA3B5", fontSize: "18px" }}>
+            {PROFILE.location} / {PROFILE.email}
           </span>
-          <span style={{ color: "#00f0ff", fontSize: "18px", fontWeight: 600 }}>
-            5+ Years • 10 Countries • 4 Languages
+          <span style={{ color: "#F2A93B", fontSize: "18px", fontWeight: 600 }}>
+            5+ years experience / 10 countries / 4 languages
           </span>
         </div>
       </div>

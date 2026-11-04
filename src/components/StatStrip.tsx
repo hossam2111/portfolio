@@ -5,19 +5,24 @@ import { PROFILE } from "@/data/profile";
 
 export function StatStrip() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-3">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 py-4">
       {PROFILE.stats.map((stat) => (
         <div
           key={stat.label}
-          className="group relative min-w-0 overflow-hidden rounded-2xl border border-white/5 bg-surface/50 p-3 sm:p-4 transition-all duration-300 hover:border-accent/30 hover:bg-surface-subtle"
+          className="group relative min-w-0 rounded-2xl border border-ink-border bg-ink-raised/50 p-4 sm:p-5 transition-all duration-200 hover:border-signal/30 hover:bg-ink-raised/80"
         >
-          <div className="font-mono text-2xl sm:text-3xl font-extrabold tracking-tight text-white group-hover:text-accent transition-colors break-words">
+          {/* Genuine metric number in IBM Plex Mono */}
+          <div className="font-mono text-3xl sm:text-4xl font-bold tracking-tight text-paper group-hover:text-signal transition-colors break-words">
             {stat.value}
           </div>
-          <div className="mt-1 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-accent/90 break-words">
+
+          {/* Plain sentence-case label in IBM Plex Sans (never mono) */}
+          <div className="mt-2 text-xs font-semibold text-signal font-sans break-words">
             {stat.label}
           </div>
-          <div className="mt-0.5 text-[10px] sm:text-[11px] leading-tight text-slate-400 break-words">
+
+          {/* Contextual description in sentence case */}
+          <div className="mt-1 text-xs leading-relaxed text-muted font-sans break-words">
             {stat.description}
           </div>
         </div>

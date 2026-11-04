@@ -30,18 +30,18 @@ export function StatusChip() {
   }, []);
 
   return (
-    <div className="inline-flex items-center gap-2.5 rounded-full border border-accent/25 bg-surface-subtle/80 px-3.5 py-1.5 text-xs text-slate-300 backdrop-blur-md shadow-[0_0_15px_rgba(0,240,255,0.08)]">
+    <div className="inline-flex items-center gap-2.5 rounded-full border border-ink-border bg-ink-raised/85 px-3.5 py-1.5 text-xs text-paper backdrop-blur-md shadow-sm">
       <span className="relative flex h-2 w-2">
         {PROFILE.isAvailableForWork && (
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
         )}
-        <span className="relative inline-flex h-2 w-2 rounded-full bg-accent shadow-[0_0_8px_#00f0ff]" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-signal shadow-[0_0_8px_#F2A93B]" />
       </span>
-      <span className="font-mono text-[11px] text-accent tracking-wide font-medium">
+      <span className="font-mono text-[11px] text-signal font-medium">
         {timeString || "Syncing clock..."}
       </span>
-      <span className="h-2.5 w-[1px] bg-white/10" aria-hidden="true" />
-      <span className="text-slate-300 font-medium">
+      <span className="h-2.5 w-[1px] bg-paper/15" aria-hidden="true" />
+      <span className="text-paper-dim text-xs font-sans">
         {PROFILE.statusText}
       </span>
     </div>

@@ -11,18 +11,18 @@ export default function AppleIcon() {
     (
       <div
         style={{
-          fontSize: 90,
-          background: "#07080a",
+          fontSize: 92,
+          background: "#0F1626",
           width: "100%",
           height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "#00f0ff",
+          color: "#F2A93B",
           fontWeight: 800,
           fontFamily: "system-ui, sans-serif",
-          borderRadius: 36,
-          border: "4px solid rgba(0, 240, 255, 0.4)",
+          borderRadius: 40,
+          border: "4px solid rgba(242, 169, 59, 0.5)",
         }}
       >
         HA

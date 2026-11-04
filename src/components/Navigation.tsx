@@ -3,14 +3,14 @@
 import React, { useEffect, useState } from "react";
 
 const NAV_ITEMS = [
-  { id: "about", label: "ABOUT" },
-  { id: "training-eval", label: "AI TRAINING & EVAL" },
-  { id: "tech-stack", label: "TECHNICAL STACK" },
-  { id: "experience", label: "EXPERIENCE" },
-  { id: "projects", label: "PROJECTS" },
-  { id: "education", label: "EDUCATION & CERTS" },
-  { id: "languages-global", label: "LANGUAGES & GLOBAL" },
-  { id: "contact", label: "CONTACT" },
+  { id: "about", label: "About" },
+  { id: "training-eval", label: "AI training and evaluation" },
+  { id: "tech-stack", label: "Technical stack" },
+  { id: "experience", label: "Experience" },
+  { id: "projects", label: "Projects" },
+  { id: "education", label: "Education and certifications" },
+  { id: "languages-global", label: "Languages and global reach" },
+  { id: "contact", label: "Contact" },
 ];
 
 export function Navigation() {
@@ -18,7 +18,7 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = window.scrollY + 220;
 
       for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
         const item = NAV_ITEMS[i];
@@ -50,8 +50,8 @@ export function Navigation() {
   };
 
   return (
-    <nav className="hidden lg:block py-6" aria-label="In-page jump links">
-      <ul className="space-y-3.5">
+    <nav className="hidden lg:block py-6" aria-label="Section navigation">
+      <ul className="space-y-3">
         {NAV_ITEMS.map((item) => {
           const isActive = activeSection === item.id;
           return (
@@ -59,21 +59,21 @@ export function Navigation() {
               <a
                 href={`#${item.id}`}
                 onClick={(e) => handleClick(e, item.id)}
-                className={`group flex items-center gap-4 py-1 text-xs font-mono tracking-widest transition-all duration-200 ${
+                className={`group flex items-center gap-3.5 py-1 text-sm font-sans transition-all duration-200 ${
                   isActive
-                    ? "text-accent font-semibold"
-                    : "text-slate-400 hover:text-slate-200"
+                    ? "text-signal font-semibold"
+                    : "text-muted hover:text-paper"
                 }`}
               >
                 <span
                   className={`h-[1px] transition-all duration-300 ${
                     isActive
-                      ? "w-16 bg-accent shadow-[0_0_8px_#00f0ff]"
-                      : "w-8 bg-slate-700 group-hover:w-12 group-hover:bg-slate-400"
+                      ? "w-12 bg-signal shadow-[0_0_8px_#F2A93B]"
+                      : "w-6 bg-muted/30 group-hover:w-10 group-hover:bg-paper/60"
                   }`}
                   aria-hidden="true"
                 />
-                <span className="uppercase">{item.label}</span>
+                <span>{item.label}</span>
               </a>
             </li>
           );

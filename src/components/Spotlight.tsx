@@ -35,7 +35,7 @@ export function Spotlight() {
     <div
       className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
       style={{
-        background: `radial-gradient(700px circle at ${position.x}px ${position.y}px, rgba(0, 240, 255, 0.065), transparent 80%)`,
+        background: `radial-gradient(650px circle at ${position.x}px ${position.y}px, rgba(242, 169, 59, 0.04), transparent 80%)`,
       }}
       aria-hidden="true"
     />
